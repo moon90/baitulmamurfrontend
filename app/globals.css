@@ -1,0 +1,88 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --izw-ink: #14221c;
+  --izw-green: #0f6b4f;
+  --izw-green-dark: #00563f;
+  --izw-gold: #c59a2f;
+  --izw-sand: #f4efe4;
+  --izw-stone: #ece6d8;
+}
+
+body {
+  background-color: var(--izw-sand);
+  color: var(--izw-ink);
+  font-family: "Cormorant Garamond", "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.font-display {
+  font-family: "Cinzel", "Trajan Pro", "Garamond", "Times New Roman", serif;
+  letter-spacing: 0.04em;
+}
+
+.font-body {
+  font-family: "Cormorant Garamond", "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+.bg-veil {
+  background-image:
+    radial-gradient(800px 200px at 80% -10%, rgba(197, 154, 47, 0.18), transparent 70%),
+    radial-gradient(700px 180px at 10% 0%, rgba(0, 86, 63, 0.16), transparent 70%);
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgba(0, 86, 63, 0.18) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.card-shadow {
+  box-shadow: 0 20px 45px rgba(14, 44, 32, 0.12);
+}
+
+.section-rule {
+  background-image: linear-gradient(90deg, transparent, rgba(0, 86, 63, 0.35), transparent);
+  height: 1px;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
