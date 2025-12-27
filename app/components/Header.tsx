@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const links = [
@@ -16,6 +17,7 @@ const links = [
 
 export default function Header() {
   const { t } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="border-b border-[#e6dcc7] bg-white">
@@ -41,13 +43,43 @@ export default function Header() {
         </div>
       </div>
       <nav className="bg-[#0f6b4f]">
-        <div className="container mx-auto flex flex-wrap justify-center gap-x-8 gap-y-2 px-4 py-3 text-[12px] uppercase tracking-[0.25em] text-white">
-          {links.map((link) => (
-            <Link key={link.label} href={link.href} className="hover:text-[#c59a2f]">
-              {t(link.label)}
-            </Link>
-          ))}
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <span className="text-[12px] uppercase tracking-[0.25em] text-white lg:hidden">
+            Menu
+          </span>
+          <button
+            type="button"
+            className="text-white lg:hidden text-xs uppercase tracking-[0.25em] border border-white/40 px-3 py-1 rounded-full"
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-expanded={isOpen}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? 'Close' : 'Open'}
+          </button>
+          <div className="hidden lg:flex flex-wrap justify-center gap-x-8 gap-y-2 text-[12px] uppercase tracking-[0.25em] text-white w-full">
+            {links.map((link) => (
+              <Link key={link.label} href={link.href} className="hover:text-[#c59a2f]">
+                {t(link.label)}
+              </Link>
+            ))}
+          </div>
         </div>
+        {isOpen ? (
+          <div className="lg:hidden border-t border-white/20">
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-3 text-[12px] uppercase tracking-[0.25em] text-white">
+              {links.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="hover:text-[#c59a2f]"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t(link.label)}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </nav>
     </header>
   );

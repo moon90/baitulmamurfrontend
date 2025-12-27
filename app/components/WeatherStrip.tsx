@@ -67,7 +67,7 @@ export default function WeatherStrip() {
 
   return (
     <div className="bg-white border border-[#e6dcc7] rounded-2xl p-4 shadow-sm">
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6">
         <div className="min-w-[160px]">
           <p className="text-xs uppercase tracking-[0.3em] text-[#0f6b4f]">
             {weather.city}
@@ -82,13 +82,17 @@ export default function WeatherStrip() {
             {weatherLabel(weather.code)}
           </p>
         </div>
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div className="flex-1">
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2">
           {items.map((day) => {
             const label = new Date(`${day.date}T00:00:00`).toLocaleDateString('en-GB', {
               weekday: 'short',
             });
             return (
-              <div key={day.date} className="bg-[#f4efe4] rounded-xl p-3 text-center">
+              <div
+                key={day.date}
+                className="min-w-[120px] bg-[#f4efe4] rounded-xl p-3 text-center"
+              >
                 <p className="text-xs uppercase tracking-wider text-[#0f6b4f]">{label}</p>
                 <p className="text-[10px] text-[#4f5b54] mt-1">{weatherLabel(day.code)}</p>
                 <div className="mt-2 text-sm text-[#0f6b4f]">
@@ -98,6 +102,7 @@ export default function WeatherStrip() {
               </div>
             );
           })}
+          </div>
         </div>
       </div>
     </div>
