@@ -50,9 +50,18 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-lg font-sans">
-      <h2 className="text-3xl font-bold text-center text-primary mb-6">{t('Contact Us')}</h2>
-      <p className="text-center text-neutral-dark mb-8">{t('We would love to hear from you. Please fill out the form below.')}</p>
+    <div className="bg-white border border-[#e6dcc7] shadow-lg rounded-2xl p-8 font-sans">
+      <div className="mb-6">
+        <p className="text-xs uppercase tracking-[0.3em] text-[#c59a2f]">
+          {t('Send a message')}
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#0f6b4f] mt-2">
+          {t('We would love to hear from you')}
+        </h2>
+        <p className="text-sm text-[#4f5b54] mt-3">
+          {t('Please fill out the form and we will respond as soon as possible.')}
+        </p>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -65,7 +74,7 @@ const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-dark leading-tight focus:outline-none focus:shadow-outline focus:border-primary"
+            className="w-full rounded-lg border border-[#e6dcc7] bg-[#f9f6ee] px-4 py-2 text-neutral-dark focus:outline-none focus:ring-2 focus:ring-[#0f6b4f]/40"
             required
           />
         </div>
@@ -79,7 +88,7 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-dark leading-tight focus:outline-none focus:shadow-outline focus:border-primary"
+            className="w-full rounded-lg border border-[#e6dcc7] bg-[#f9f6ee] px-4 py-2 text-neutral-dark focus:outline-none focus:ring-2 focus:ring-[#0f6b4f]/40"
             required
           />
         </div>
@@ -93,7 +102,7 @@ const ContactForm = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-dark leading-tight focus:outline-none focus:shadow-outline focus:border-primary"
+            className="w-full rounded-lg border border-[#e6dcc7] bg-[#f9f6ee] px-4 py-2 text-neutral-dark focus:outline-none focus:ring-2 focus:ring-[#0f6b4f]/40"
           />
         </div>
         <div>
@@ -106,13 +115,13 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-neutral-dark leading-tight focus:outline-none focus:shadow-outline resize-none focus:border-primary"
+            className="w-full rounded-lg border border-[#e6dcc7] bg-[#f9f6ee] px-4 py-2 text-neutral-dark focus:outline-none focus:ring-2 focus:ring-[#0f6b4f]/40 resize-none"
             required
           ></textarea>
         </div>
         <button
           type="submit"
-          className={`w-full bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-200 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`w-full bg-[#0f6b4f] hover:bg-[#00563f] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
           disabled={status === 'loading'}
         >
           {status === 'loading' ? t('Sending...') : t('Send Message')}

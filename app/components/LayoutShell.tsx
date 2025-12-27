@@ -6,14 +6,6 @@ import Footer from './Footer';
 import Header from './Header';
 
 export default function LayoutShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const resolvedPath = pathname ?? '';
-  const isWillkommen = resolvedPath.startsWith('/willkommen');
-
-  if (isWillkommen) {
-    return <>{children}</>;
-  }
-
   return (
     <>
       <Header />

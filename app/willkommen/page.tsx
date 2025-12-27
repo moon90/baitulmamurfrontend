@@ -213,39 +213,6 @@ function SectionGrid({ title, subtitle, items, columns }: SectionData) {
 export default function WillkommenPage() {
   return (
     <div className="bg-[#f4efe4] text-[#14221c]">
-      <header className="bg-white border-b border-[#e6dcc7]">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="h-14 w-14 rounded-full bg-[#e9e2d5] flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-[#8a8174]">
-              Logo
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.35em] text-[#0f6b4f]">
-                BAITUL MAMUR MASJID FAVORITEN
-              </p>
-              <p className="font-display text-lg text-[#0f6b4f]">
-                BAITUL MAMUR MASJID FAVORITEN
-              </p>
-            </div>
-          </div>
-          <div className="text-xs text-[#4f5b54] flex flex-wrap gap-4">
-            <span>1100 WIEN, SCHEUGASSE 9</span>
-            <Link href="/contact" className="uppercase tracking-widest text-[#0f6b4f]">
-              Contact
-            </Link>
-          </div>
-        </div>
-        <nav className="bg-[#0f6b4f] text-white">
-          <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.2em]">
-            {navLinks.map((link) => (
-              <Link key={link.label} href={link.href} className="hover:text-[#c59a2f]">
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </nav>
-      </header>
-
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 py-8">
           <div className="relative overflow-hidden rounded-2xl border border-[#e6dcc7]">

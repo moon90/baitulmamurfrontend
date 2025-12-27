@@ -1,44 +1,54 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+
+const links = [
+  { label: 'Welcome', href: '/willkommen' },
+  { label: 'The Mosque', href: '/about' },
+  { label: 'Service', href: '/contact' },
+  { label: 'Education & Culture', href: '/education' },
+  { label: 'Events', href: '/events' },
+  { label: 'Media', href: '/news' },
+  { label: 'Social', href: '/contact' },
+  { label: 'App', href: '/mobile-app' },
+];
 
 export default function Header() {
   const { t } = useTranslation();
 
   return (
-    <header>
-      {/* Top Navigation Bar */}
-      <nav className="bg-gray-800 text-white p-2 text-sm">
-        <div className="container mx-auto flex justify-between items-center">
-          <span className="font-bold">Islamic Center Vienna</span>
-          <div className="flex space-x-4">
-            <Link href="/" className="hover:text-green-400">{t('Welcome')}</Link>
-            <Link href="/mosque" className="hover:text-green-400">{t('The Mosque')}</Link>
-            <Link href="/contact" className="hover:text-green-400">{t('Contact')}</Link>
-            <Link href="/service" className="hover:text-green-400">{t('Service')}</Link>
-            <Link href="/education" className="hover:text-green-400">{t('Education & Culture')}</Link>
-            <Link href="/events" className="hover:text-green-400">{t('Events')}</Link>
-            <Link href="/media" className="hover:text-green-400">{t('Media')}</Link>
-            <Link href="/social" className="hover:text-green-400">{t('Social')}</Link>
-            <Link href="/app" className="hover:text-green-400">{t('App')}</Link>
+    <header className="border-b border-[#e6dcc7] bg-white">
+      <div className="container mx-auto flex flex-wrap items-center justify-between gap-4 px-4 py-4">
+        <div className="flex items-center gap-3">
+          <div className="h-12 w-12 rounded-full bg-[#e9e2d5] flex items-center justify-center text-[10px] uppercase tracking-[0.2em] text-[#8a8174]">
+            Logo
+          </div>
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-[#0f6b4f]">
+              BAITUL MAMUR MASJID FAVORITEN
+            </p>
+            <p className="font-display text-lg text-[#0f6b4f]">
+              BAITUL MAMUR MASJID FAVORITEN
+            </p>
           </div>
         </div>
-      </nav>
-
-      {/* Main Header Section */}
-      <div
-        className="relative bg-cover bg-center h-96 flex flex-col justify-center items-center text-white"
-        style={{ backgroundImage: "url('/IZW.png')" }} // Assuming main.png is in public folder
-      >
-        <div className="absolute inset-0 bg-green-900 opacity-70"></div> {/* Green Overlay */}
-        <div className="relative z-10 text-center">
-          <Image src="/goe.png" alt="IZW Logo" width={100} height={100} className="mx-auto mb-4" /> {/* Assuming goe.png is the IZW logo */}
-          <p className="text-4xl font-arabic mb-2">المركز الإسلامي بفيينا</p>
-          <p className="text-xl">ISLAMISCHES ZENTRUM WIEN</p>
+        <div className="text-xs text-[#4f5b54] flex flex-wrap gap-4">
+          <span>1100 WIEN, SCHEUGASSE 9</span>
+          <Link href="/contact" className="uppercase tracking-widest text-[#0f6b4f]">
+            Contact
+          </Link>
         </div>
       </div>
+      <nav className="bg-[#0f6b4f]">
+        <div className="container mx-auto flex flex-wrap justify-center gap-x-8 gap-y-2 px-4 py-3 text-[12px] uppercase tracking-[0.25em] text-white">
+          {links.map((link) => (
+            <Link key={link.label} href={link.href} className="hover:text-[#c59a2f]">
+              {t(link.label)}
+            </Link>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }
