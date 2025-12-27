@@ -15,7 +15,7 @@ const AskTheImam = () => {
     setError(null);
 
     try {
-      const res = await fetch('http://localhost:5000/api/imam-questions', {
+      const res = await fetch('/api/imam-questions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

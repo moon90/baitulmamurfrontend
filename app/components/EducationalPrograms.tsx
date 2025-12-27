@@ -24,7 +24,7 @@ const EducationalPrograms = () => {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/educational-programs');
+        const res = await fetch('/api/educational-programs');
         if (!res.ok) {
           throw new Error('Failed to fetch educational programs');
         }

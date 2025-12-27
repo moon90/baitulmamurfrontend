@@ -35,7 +35,7 @@ export default function AdminLiveStreamPage() {
     setError(null);
     try {
       // Assuming fetchWithAuth handles JWT token inclusion
-      const res = await fetchWithAuth('http://localhost:5000/api/live-stream/list', {
+      const res = await fetchWithAuth('/api/live-stream/list', {
         method: 'GET',
       });
 
@@ -71,7 +71,7 @@ export default function AdminLiveStreamPage() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetchWithAuth('http://localhost:5000/api/live-stream/create', {
+      const res = await fetchWithAuth('/api/live-stream/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newStreamName, recording: { mode: isRecordingEnabled ? 'automatic' : 'off' } }),

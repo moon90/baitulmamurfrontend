@@ -10,7 +10,7 @@ i18n
     supportedLngs: ['en', 'de', 'ar'],
     fallbackLng: 'de',
     backend: {
-      loadPath: 'http://localhost:5000/api/translations/{{lng}}',
+      loadPath: '/api/translations/{{lng}}',
     },
     react: {
       useSuspense: false,

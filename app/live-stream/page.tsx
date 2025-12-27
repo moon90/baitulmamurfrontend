@@ -24,7 +24,7 @@ const LiveStreamPage = () => {
         // which gives you the UID of the currently active stream,
         // or you can just use a fixed one if you manage streams manually.
         // For now, we'll directly use the FIXED_LIVE_INPUT_UID with the backend endpoint
-        const res = await fetch(`http://localhost:5000/api/live-stream/playback-url/${FIXED_LIVE_INPUT_UID}`);
+        const res = await fetch(`/api/live-stream/playback-url/${FIXED_LIVE_INPUT_UID}`);
         
         if (!res.ok) {
           throw new Error('Failed to fetch playback URL');

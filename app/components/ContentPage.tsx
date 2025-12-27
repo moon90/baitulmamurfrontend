@@ -25,7 +25,7 @@ const ContentPage = ({ slug }: ContentPageProps) => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/content-pages/${slug}/${i18n.language}`);
+        const res = await fetch(`/api/content-pages/${slug}/${i18n.language}`);
         if (!res.ok) {
           throw new Error('Failed to fetch content');
         }

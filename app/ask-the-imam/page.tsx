@@ -21,7 +21,7 @@ const AskTheImamPage = () => {
   useEffect(() => {
     const fetchPublicQuestions = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/imam-questions/public');
+        const res = await fetch('/api/imam-questions/public');
         if (!res.ok) {
           throw new Error('Failed to fetch public questions');
         }
