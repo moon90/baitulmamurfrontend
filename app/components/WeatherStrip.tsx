@@ -66,42 +66,52 @@ export default function WeatherStrip() {
   }
 
   return (
-    <div className="bg-white border border-[#e6dcc7] rounded-2xl p-4 shadow-sm">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-        <div className="min-w-[160px]">
-          <p className="text-xs uppercase tracking-[0.3em] text-[#0f6b4f]">
+    <div className="bg-gradient-to-br from-white via-white to-[#f6f0e5] border border-[#e6dcc7] rounded-2xl p-6 shadow-lg">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.35em] text-[#c59a2f] font-semibold">
             {weather.city}
           </p>
-          <p className="text-lg font-display text-[#0f6b4f] mt-1">
+          <h3 className="font-display text-2xl text-[#0f6b4f] mt-2">
             Weather
-          </p>
-          <p className="text-3xl text-[#0f6b4f] mt-2">
-            {Math.round(weather.temp)}C
-          </p>
-          <p className="text-sm text-[#4f5b54]">
-            {weatherLabel(weather.code)}
-          </p>
+          </h3>
         </div>
-        <div className="flex-1">
-          <div className="flex gap-3 overflow-x-auto pb-2 -mx-2 px-2">
-          {items.map((day) => {
-            const label = new Date(`${day.date}T00:00:00`).toLocaleDateString('en-GB', {
-              weekday: 'short',
-            });
-            return (
-              <div
-                key={day.date}
-                className="min-w-[120px] bg-[#f4efe4] rounded-xl p-3 text-center"
-              >
-                <p className="text-xs uppercase tracking-wider text-[#0f6b4f]">{label}</p>
-                <p className="text-[10px] text-[#4f5b54] mt-1">{weatherLabel(day.code)}</p>
-                <div className="mt-2 text-sm text-[#0f6b4f]">
-                  <span className="font-semibold">{Math.round(day.max)}C</span>
-                  <span className="text-[#8a8174] ml-2">{Math.round(day.min)}C</span>
+        <span className="text-xs uppercase tracking-[0.35em] text-[#0f6b4f] bg-white px-3 py-1 rounded-full border border-[#e6dcc7]">
+          Vienna
+        </span>
+      </div>
+      <div className="mt-5 bg-white rounded-xl border border-[#efe7d6] shadow-sm p-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-sm text-[#4f5b54]">Current</p>
+            <p className="text-3xl text-[#0f6b4f] mt-1">
+              {Math.round(weather.temp)}C
+            </p>
+            <p className="text-sm text-[#4f5b54]">
+              {weatherLabel(weather.code)}
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 flex-1">
+            {items.map((day) => {
+              const label = new Date(`${day.date}T00:00:00`).toLocaleDateString('en-GB', {
+                weekday: 'short',
+              });
+              return (
+                <div
+                  key={day.date}
+                  className="min-w-0 rounded-xl border border-[#efe7d6] bg-[#f9f6ee] px-2 py-3 text-center"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-[#0f6b4f]">
+                    {label}
+                  </p>
+                  <p className="text-[10px] text-[#4f5b54] mt-1">{weatherLabel(day.code)}</p>
+                  <div className="mt-2 text-sm text-[#0f6b4f]">
+                    <span className="font-semibold">{Math.round(day.max)}C</span>
+                    <span className="text-[#8a8174] ml-2">{Math.round(day.min)}C</span>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
           </div>
         </div>
       </div>
