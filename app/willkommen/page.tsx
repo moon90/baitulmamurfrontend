@@ -4,6 +4,7 @@ import PrayerTimes from '../components/PrayerTimes';
 import PrayerTimesCountdown from '../components/PrayerTimesCountdown';
 import PrayerTimesTable from '../components/PrayerTimesTable';
 import WeatherStrip from '../components/WeatherStrip';
+import JamaatSchedule from '../components/JamaatSchedule';
 
 type CardItem = {
   title: string;
@@ -247,34 +248,39 @@ export default function WillkommenPage() {
 
       <section className="py-10">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
-            <div className="bg-white border border-[#e6dcc7] rounded-2xl p-6 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#c59a2f] font-semibold">
-                Welcome Message
-              </p>
-              <h2 className="font-display text-2xl sm:text-3xl text-[#0f6b4f] mt-2">
-                Welcome to BAITUL MAMUR MASJID FAVORITEN
-              </h2>
-              <p className="text-sm text-[#4f5b54] mt-4 leading-relaxed">
-                We are committed to serving the Muslim community and fostering dialogue
-                through education, culture, and social engagement. Explore prayer times,
-                events, and programs for all ages.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/prayer-times"
-                  className="bg-[#0f6b4f] text-white px-4 py-2 text-xs uppercase tracking-widest rounded-full"
-                >
-                  Prayer Times
-                </Link>
-                <Link
-                  href="/events"
-                  className="border border-[#0f6b4f] text-[#0f6b4f] px-4 py-2 text-xs uppercase tracking-widest rounded-full"
-                >
-                  Events
-                </Link>
-              </div>
+          <div className="bg-white border border-[#e6dcc7] rounded-2xl p-6 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#c59a2f] font-semibold">
+              Welcome Message
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl text-[#0f6b4f] mt-2">
+              Welcome to BAITUL MAMUR MASJID FAVORITEN
+            </h2>
+            <p className="text-sm text-[#4f5b54] mt-4 leading-relaxed">
+              We are committed to serving the Muslim community and fostering dialogue
+              through education, culture, and social engagement. Explore prayer times,
+              events, and programs for all ages.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/prayer-times"
+                className="bg-[#0f6b4f] text-white px-4 py-2 text-xs uppercase tracking-widest rounded-full"
+              >
+                Prayer Times
+              </Link>
+              <Link
+                href="/events"
+                className="border border-[#0f6b4f] text-[#0f6b4f] px-4 py-2 text-xs uppercase tracking-widest rounded-full"
+              >
+                Events
+              </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div className="bg-gradient-to-br from-white via-white to-[#f6f0e5] border border-[#e6dcc7] rounded-2xl p-6 shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
@@ -293,6 +299,7 @@ export default function WillkommenPage() {
                 <PrayerTimes />
               </div>
             </div>
+            <JamaatSchedule />
           </div>
         </div>
       </section>
