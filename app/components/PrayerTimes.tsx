@@ -6,7 +6,8 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 interface PrayerTime {
   id: string;
-  date: string;
+  prayer_date: string;
+  location: string;
   fajr: string;
   sunrise: string;
   dhuhr: string;
@@ -14,6 +15,13 @@ interface PrayerTime {
   maghrib: string;
   isha: string;
 }
+
+const formatTime = (value: string) => {
+  if (!value) return value;
+  const parts = value.split(':');
+  if (parts.length < 2) return value;
+  return `${parts[0].padStart(2, '0')}:${parts[1].padStart(2, '0')}`;
+};
 
 const PrayerTimes = () => {
   const { t } = useTranslation(); // Use useTranslation hook
@@ -24,7 +32,7 @@ const PrayerTimes = () => {
   useEffect(() => {
     const fetchPrayerTimes = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/prayer-times');
+        const res = await fetch('/api/prayer-times?location=Vienna');
         if (!res.ok) {
           throw new Error('Failed to fetch prayer times');
         }
@@ -44,28 +52,58 @@ const PrayerTimes = () => {
     fetchPrayerTimes();
   }, []);
 
-  if (loading) return <div className="text-center text-neutral-dark">{t('Loading prayer times...')}</div>;
-  if (error) return <div className="text-center text-red-500">{t('Error:')} {error}</div>;
+  if (loading) {
+    return (
+      <div className="text-center text-neutral-dark" suppressHydrationWarning>
+        {t('Loading prayer times...')}
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="text-center text-red-500" suppressHydrationWarning>
+        {t('Error:')} {error}
+      </div>
+    );
+  }
 
   // Get today's prayer times
   const today = new Date().toISOString().split('T')[0];
-  const todayPrayerTime = prayerTimes.find(pt => pt.date.split('T')[0] === today);
+  const todayPrayerTime = prayerTimes.find(pt => pt.prayer_date.split('T')[0] === today);
 
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 font-sans">
-      <h2 className="text-2xl font-bold mb-4 text-center text-primary">{t('Today\'s Prayer Times')}</h2>
+    <div className="font-sans">
+      <div className="flex items-center justify-end mb-4">
+        <span className="text-[11px] uppercase tracking-[0.3em] text-[#c59a2f]">
+          {today}
+        </span>
+      </div>
       {todayPrayerTime ? (
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 text-center text-neutral-dark">
-          <div><p className="font-semibold">{t('Fajr')}</p><p>{todayPrayerTime.fajr}</p></div>
-          <div><p className="font-semibold">{t('Sunrise')}</p><p>{todayPrayerTime.sunrise}</p></div>
-          <div><p className="font-semibold">{t('Dhuhr')}</p><p>{todayPrayerTime.dhuhr}</p></div>
-          <div><p className="font-semibold">{t('Asr')}</p><p>{todayPrayerTime.asr}</p></div>
-          <div><p className="font-semibold">{t('Maghrib')}</p><p>{todayPrayerTime.maghrib}</p></div>
-          <div><p className="font-semibold">{t('Isha')}</p><p>{todayPrayerTime.isha}</p></div>
+        <div className="flex flex-wrap gap-3 text-center text-[#1f2b24]">
+          {[
+            { label: t('Fajr'), value: formatTime(todayPrayerTime.fajr) },
+            { label: t('Sunrise'), value: formatTime(todayPrayerTime.sunrise) },
+            { label: t('Dhuhr'), value: formatTime(todayPrayerTime.dhuhr) },
+            { label: t('Asr'), value: formatTime(todayPrayerTime.asr) },
+            { label: t('Maghrib'), value: formatTime(todayPrayerTime.maghrib) },
+            { label: t('Isha'), value: formatTime(todayPrayerTime.isha) },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="flex-1 min-w-[120px] rounded-xl border border-[#efe7d6] bg-[#f9f6ee] px-2 py-3 shadow-sm"
+            >
+              <p className="text-[10px] uppercase tracking-[0.16em] text-[#0f6b4f]">
+                {item.label}
+              </p>
+              <p className="mt-2 text-base font-semibold text-[#0f6b4f] tabular-nums whitespace-nowrap">
+                {item.value}
+              </p>
+            </div>
+          ))}
         </div>
       ) : (
-        <p className="text-center text-neutral-dark">{t('No prayer times found for today.')}</p>
+        <p className="text-center text-[#4f5b54]">{t('No prayer times found for today.')}</p>
       )}
     </div>
   );

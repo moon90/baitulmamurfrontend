@@ -1,6 +1,9 @@
 import Link from 'next/link';
 
 import PrayerTimes from '../components/PrayerTimes';
+import PrayerTimesCountdown from '../components/PrayerTimesCountdown';
+import PrayerTimesTable from '../components/PrayerTimesTable';
+import WeatherStrip from '../components/WeatherStrip';
 
 type CardItem = {
   title: string;
@@ -218,15 +221,15 @@ export default function WillkommenPage() {
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-[#0f6b4f]">
-                Islamic Center Vienna
+                BAITUL MAMUR MASJID FAVORITEN
               </p>
               <p className="font-display text-lg text-[#0f6b4f]">
-                Islamisches Zentrum Wien
+                BAITUL MAMUR MASJID FAVORITEN
               </p>
             </div>
           </div>
           <div className="text-xs text-[#4f5b54] flex flex-wrap gap-4">
-            <span>Am Bruckhaufen 3, 1210 Wien</span>
+            <span>1100 WIEN, SCHEUGASSE 9</span>
             <Link href="/contact" className="uppercase tracking-widest text-[#0f6b4f]">
               Contact
             </Link>
@@ -251,12 +254,26 @@ export default function WillkommenPage() {
                 Willkommen
               </p>
               <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white mt-2">
-                Welcome to the Islamic Center Vienna
+                Welcome to BAITUL MAMUR MASJID FAVORITEN
               </h1>
               <p className="text-sm sm:text-base text-white mt-3 max-w-2xl">
                 A place of prayer, culture, and community service in the heart of Vienna.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <WeatherStrip />
+        </div>
+      </section>
+
+      <section className="py-4">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-[#0f6b4f] rounded-2xl p-8 shadow-sm">
+            <PrayerTimesCountdown />
           </div>
         </div>
       </section>
@@ -269,7 +286,7 @@ export default function WillkommenPage() {
                 Welcome Message
               </p>
               <h2 className="font-display text-2xl sm:text-3xl text-[#0f6b4f] mt-2">
-                Welcome to the Islamic Center Vienna
+                Welcome to BAITUL MAMUR MASJID FAVORITEN
               </h2>
               <p className="text-sm text-[#4f5b54] mt-4 leading-relaxed">
                 We are committed to serving the Muslim community and fostering dialogue
@@ -291,18 +308,31 @@ export default function WillkommenPage() {
                 </Link>
               </div>
             </div>
-            <div className="bg-white border border-[#e6dcc7] rounded-2xl p-6 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#c59a2f] font-semibold">
-                Today
-              </p>
-              <h3 className="font-display text-xl text-[#0f6b4f] mt-2">
-                Prayer Times
-              </h3>
-              <div className="mt-4">
+            <div className="bg-gradient-to-br from-white via-white to-[#f6f0e5] border border-[#e6dcc7] rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.35em] text-[#c59a2f] font-semibold">
+                    Today
+                  </p>
+                  <h3 className="font-display text-2xl text-[#0f6b4f] mt-2">
+                    Prayer Times
+                  </h3>
+                </div>
+                <span className="text-xs uppercase tracking-[0.35em] text-[#0f6b4f] bg-white px-3 py-1 rounded-full border border-[#e6dcc7]">
+                  Vienna
+                </span>
+              </div>
+              <div className="mt-5 bg-white rounded-xl border border-[#efe7d6] shadow-sm p-4">
                 <PrayerTimes />
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <div className="max-w-6xl mx-auto px-4">
+          <PrayerTimesTable />
         </div>
       </section>
 
@@ -386,9 +416,9 @@ export default function WillkommenPage() {
             <p className="text-xs uppercase tracking-[0.3em] text-white/70">
               Contact
             </p>
-            <h3 className="font-display text-lg mt-2">Islamic Center Vienna</h3>
+            <h3 className="font-display text-lg mt-2">BAITUL MAMUR MASJID FAVORITEN</h3>
             <p className="text-sm text-white/80 mt-2">
-              Am Bruckhaufen 3
+              1100 WIEN, SCHEUGASSE 9
               <br />
               1210 Wien
             </p>
@@ -421,7 +451,7 @@ export default function WillkommenPage() {
           </div>
         </div>
         <div className="border-t border-white/20 text-xs text-white/70 px-4 py-4 text-center">
-          Copyright 2025 Islamisches Zentrum Wien. All rights reserved.
+          Copyright 2025 BAITUL MAMUR MASJID FAVORITEN. All rights reserved.
         </div>
       </footer>
     </div>

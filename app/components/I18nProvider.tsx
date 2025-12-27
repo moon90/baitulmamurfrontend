@@ -10,13 +10,11 @@ const I18nProvider = ({ children, initialLanguage }: { children: React.ReactNode
   // Use a state to track if i18n is ready for client-side detection
   const [i18nReady, setI18nReady] = useState(false);
 
-  // This block ensures the language is set during SSR and initially on client
-  // It runs for every render
-  if (i18n.language !== initialLanguage) {
-    i18n.changeLanguage(initialLanguage);
-  }
-
   useEffect(() => {
+    if (i18n.language !== initialLanguage) {
+      i18n.changeLanguage(initialLanguage);
+    }
+
     // Only use LanguageDetector on the client
     if (!(i18n as any).browserDetected) { // Add a custom flag to i18n instance
       i18n.use(LanguageDetector);
